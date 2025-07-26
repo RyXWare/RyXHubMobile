@@ -1,7 +1,601 @@
-getgenv().Blatant={Prediction=0.119 -0 ,FOV=113 -83 };local v1=loadstring(game:HttpGet("https://sirius.menu/rayfield"))();local v2,v3,v4=game:GetService("Players"),game:GetService("RunService"),game:GetService("UserInputService");local v5,v6=v2.LocalPlayer,workspace.CurrentCamera;local v7,v8=Vector2.new,Vector3.new;local v9,v10=nil,0;local v11={"Head","UpperTorso","HumanoidRootPart","LowerTorso"};getgenv().Silent={Setting={IsTargetting=false,Prediction=562.119 -(334 + 228) ,WallCheck=true,HealthThreshold=13 -3 ,FOV={Radius=641 -(187 + 54) ,Visible=false},ShakeIntensity=0.35,MinimumYThreshold= -5,TriggerbotEnabled=true}};local v13=Drawing.new("Circle");v13.Transparency,v13.Thickness,v13.Color,v13.Filled=780.5 -(162 + 618) ,1.6 + 0 ,Color3.fromRGB(154 + 76 ,226 + 4 ,250),true;local function v18(v74) v13.Position=v7(v6.ViewportSize.X/(4 -2) ,v6.ViewportSize.Y/2 );v13.Visible=getgenv().Silent.Setting.FOV.Visible;v13.Radius=v74 * (6.067 -3) ;end task.spawn(function() while task.wait() do v18(getgenv().Silent.Setting.FOV.Radius);end end);local function v19() return v5.Character and v5.Character:FindFirstChild("Humanoid") and (v5.Character.Humanoid.Health>(0 -0)) ;end local function v20(v79,v80) local v81=0 + 0 ;local v82;local v83;local v84;while true do if (v81==(0 + 0)) then if  not getgenv().Silent.Setting.WallCheck then return true;end v82,v83=v6.CFrame.Position,v79-v6.CFrame.Position ;v81=1 + 0 ;end if (v81==(1637 -(1373 + 263))) then local v156=1000 -(451 + 549) ;while true do if (v156==1) then v81=1 + 1 ;break;end if (v156==(0 -0)) then v84=RaycastParams.new();v84.FilterDescendantsInstances,v84.FilterType=v80,Enum.RaycastFilterType.Blacklist;v156=1 -0 ;end end end if (v81==(767 -(574 + 191))) then return workspace:Raycast(v82,v83,v84)==nil ;end end end local function v21(v85) return v8((math.random( -(168 -68),1484 -(746 + 638) )/(38 + 62)) * v85 ,(math.random( -(250 -150),52 + 48 )/(151 -51)) * v85 ,(math.random( -(226 -(55 + 71)),131 -31 )/(1890 -(573 + 1217))) * v85 );end local function v22() if  not v19() then return nil;end local v86,v87=nil,math.huge;for v133,v134 in pairs(v2:GetPlayers()) do if ((v134~=v5) and v134.Character and v134.Character:FindFirstChild("HumanoidRootPart")) then local v157=341 -(218 + 123) ;local v158;while true do if ((0 + 0)==v157) then v158=v134.Character:FindFirstChildOfClass("Humanoid");if (v158 and (v158.Health>getgenv().Silent.Setting.HealthThreshold)) then local v215=1581 -(1535 + 46) ;local v216;local v217;local v218;while true do if (v215==0) then local v237=0 + 0 ;while true do if (v237==(1 + 0)) then v215=2 -1 ;break;end if (v237==(0 -0)) then v216,v217=v6:WorldToScreenPoint(v134.Character.HumanoidRootPart.Position);v218=(v7(v216.X,v216.Y) -v7(v6.ViewportSize.X/(562 -(306 + 254)) ,v6.ViewportSize.Y/(1 + 1) )).Magnitude;v237=1 -0 ;end end end if (v215==(1468 -(899 + 568))) then if ((v13.Radius>v218) and (v218<v87) and v217 and v20(v134.Character.HumanoidRootPart.Position,{v5.Character,v134.Character})) then v86,v87=v134,v218;end break;end end end break;end end end end return v86;end local v23;v23=hookmetamethod(game,"__index",function(v88,v89) local v90=0 + 0 ;while true do if (v90==(1886 -(927 + 959))) then if (v88:IsA("Mouse") and (v89=="Hit") and getgenv().Silent.Setting.IsTargetting and v9) then local v190=0 -0 ;local v191;while true do if (v190==(604 -(268 + 335))) then if (v191 and v191.Character) then local v226=0 -0 ;local v227;while true do if (v226==(290 -(60 + 230))) then v227=v191.Character:FindFirstChild(v11[math.random(1, #v11)]) or v191.Character:FindFirstChild("HumanoidRootPart") ;if (v227 and (v227.Position.Y>getgenv().Silent.Setting.MinimumYThreshold)) then local v254=0 -0 ;local v255;local v256;while true do if ((573 -(426 + 146))==v254) then return CFrame.new(v227.Position + v255 + v256 );end if (v254==(0 + 0)) then local v262=1456 -(282 + 1174) ;while true do if (v262==(0 -0)) then v255=v227.Velocity * getgenv().Silent.Setting.Prediction ;v256=v21(getgenv().Silent.Setting.ShakeIntensity);v262=1;end if (v262==(1797 -(503 + 1293))) then v254=812 -(569 + 242) ;break;end end end end end break;end end end break;end if (v190==(0 -0)) then if  not v19() then return v23(v88,v89);end v191=v9;v190=1 + 0 ;end end end return v23(v88,v89);end end end);task.spawn(function() local v91=1024 -(706 + 318) ;local v92;while true do if (v91==1) then while task.wait(1251.05 -(721 + 530) ) do if (getgenv().Silent.Setting.TriggerbotEnabled and v19()) then v92.FilterDescendantsInstances={v5.Character};local v207=v6:ViewportPointToRay(v6.ViewportSize.X/(2 + 0) ,v6.ViewportSize.Y/(4 -2) );local v208=workspace:Raycast(v207.Origin,v207.Direction * (890 + 110) ,v92);if (v208 and v208.Instance and v208.Instance.Parent) then local v219=v208.Instance.Parent:FindFirstChildOfClass("Humanoid");if (v219 and (v219.Health>getgenv().Silent.Setting.HealthThreshold)) then local v228=700 -(271 + 429) ;while true do if (v228==(1 + 0)) then mouse1release();break;end if ((1500 -(1408 + 92))==v228) then mouse1press();task.wait(533.05 -(43 + 490) );v228=734 -(711 + 22) ;end end end end end end break;end if (v91==(1086 -(461 + 625))) then local v159=859 -(240 + 619) ;while true do if (v159==0) then v92=RaycastParams.new();v92.FilterType=Enum.RaycastFilterType.Blacklist;v159=1289 -(993 + 295) ;end if (v159==(1 + 0)) then v91=1172 -(418 + 753) ;break;end end end end end);v3.Heartbeat:Connect(function(v93) if (getgenv().Silent.Setting.IsTargetting and v9 and v9.Character and v9.Character:FindFirstChild("HumanoidRootPart")) then local v139=0 + 0 ;local v140;local v141;local v142;local v143;local v144;while true do if (v139==(1 + 0)) then v141=math.cos(math.rad(v10)) * (1759 -(1344 + 400)) ;v142=math.sin(math.rad(v10)) * (5 + 10) ;v139=1 + 1 ;end if ((529 -(406 + 123))==v139) then v10+=((2039 -(1749 + 20)) * v93) v140=v9.Character.HumanoidRootPart;v139=1 + 0 ;end if (v139==(1324 -(1249 + 73))) then v143=v140.Position + Vector3.new(v141,72 + 128 ,v142) ;v144=v5.Character and v5.Character:FindFirstChild("HumanoidRootPart") ;v139=1148 -(466 + 679) ;end if (v139==(1742 -(404 + 1335))) then if v144 then local v211=406 -(183 + 223) ;while true do if (v211==(0 -0)) then v144.Velocity=Vector3.zero;v144.CFrame=CFrame.new(v143,v140.Position);break;end end end break;end end end end);v5.CharacterAdded:Connect(function(v94) v94:WaitForChild("Humanoid").Died:Connect(function() local v135=0;local v136;while true do if (v135==(0 -0)) then v136=0 + 0 ;while true do if (v136==(1900 -(106 + 1794))) then getgenv().Silent.Setting.IsTargetting=false;v9=nil;break;end end break;end end end);end);local v24=v1:CreateWindow({Name="RyX Hub",LoadingTitle="RyX Hub [NEW]",LoadingSubtitle="By Ryan (solo dev)ðð¸",ConfigurationSaving={Enabled=true}});local v25=v24:CreateTab("Updates!",6519197075 -2035834617 );local v26=v24:CreateTab("Main",5639890514 -1156528056 );local v27=v24:CreateTab("Blatant",4483362572 -(4 + 110) );local v28=v25:CreateParagraph({Title="Update v0.1",Content=[[
+local Key = "RyXHubBest03167";
+local UserInputService = game:GetService("UserInputService");
+local Players = game:GetService("Players");
+local LocalPlayer = Players.LocalPlayer;
+local Rayfield = loadstring(game:HttpGet("https://sirius.menu/rayfield"))();
+local Window = Rayfield:CreateWindow({Name="RyX Hub | Key System",LoadingTitle="RyX Hub",LoadingSubtitle="by Ryan",ConfigurationSaving={Enabled=false}});
+local hasKey = false;
+local KeyTab = Window:CreateTab("ð Key", 4483362458);
+KeyTab:CreateParagraph({Title="Where to get Key",Content="https://direct-link.net/1375026/u7hLsNFXwCQM"});
+KeyTab:CreateInput({Name="Enter Key",PlaceholderText="Enter key here",RemoveTextAfterFocusLost=false,Callback=function(input)
+	if (input == Key) then
+		local FlatIdent_52901 = 0;
+		while true do
+			if (FlatIdent_52901 == 1) then
+				wait(1);
+				Rayfield:Destroy();
+				break;
+			end
+			if (FlatIdent_52901 == 0) then
+				hasKey = true;
+				Rayfield:Notify({Title="Success",Content="Correct Key!",Duration=4});
+				FlatIdent_52901 = 1;
+			end
+		end
+	else
+		local FlatIdent_2953F = 0;
+		while true do
+			if (FlatIdent_2953F == 0) then
+				Rayfield:Notify({Title="Error",Content="Incorrect Key!",Duration=4});
+				wait(2);
+				FlatIdent_2953F = 1;
+			end
+			if (FlatIdent_2953F == 1) then
+				LocalPlayer:Kick("Incorrect Key. Get key from: https://direct-link.net/1375026/u7hLsNFXwCQM");
+				break;
+			end
+		end
+	end
+end});
+repeat
+	task.wait();
+until hasKey 
+getgenv().Blatant = {Prediction=0.119,FOV=30};
+local Rayfield = loadstring(game:HttpGet("https://sirius.menu/rayfield"))();
+local Players, RunService, UIS = game:GetService("Players"), game:GetService("RunService"), game:GetService("UserInputService");
+local Client, Cam = Players.LocalPlayer, workspace.CurrentCamera;
+local Vector2New, Vector3New = Vector2.new, Vector3.new;
+local LockedTarget, theta = nil, 0;
+local TargetParts = {"Head","UpperTorso","HumanoidRootPart","LowerTorso"};
+getgenv().Silent = {Setting={IsTargetting=false,Prediction=0.119,WallCheck=true,HealthThreshold=10,FOV={Radius=400,Visible=false},ShakeIntensity=0.35,MinimumYThreshold=-5,TriggerbotEnabled=true}};
+local FOV = Drawing.new("Circle");
+FOV.Transparency, FOV.Thickness, FOV.Color, FOV.Filled = 0.5, 1.6, Color3.fromRGB(230, 230, 250), true;
+local function UpdateFOV(Radius)
+	FOV.Position = Vector2New(Cam.ViewportSize.X / 2, Cam.ViewportSize.Y / 2);
+	FOV.Visible = getgenv().Silent.Setting.FOV.Visible;
+	FOV.Radius = Radius * 3.067;
+end
+task.spawn(function()
+	while task.wait() do
+		UpdateFOV(getgenv().Silent.Setting.FOV.Radius);
+	end
+end);
+local function checkAlive()
+	return Client.Character and Client.Character:FindFirstChild("Humanoid") and (Client.Character.Humanoid.Health > 0);
+end
+local function WallCheck(destination, ignore)
+	local FlatIdent_47A9C = 0;
+	local Origin;
+	local Direction;
+	local RayParams;
+	while true do
+		if (FlatIdent_47A9C == 1) then
+			RayParams = RaycastParams.new();
+			RayParams.FilterDescendantsInstances, RayParams.FilterType = ignore, Enum.RaycastFilterType.Blacklist;
+			FlatIdent_47A9C = 2;
+		end
+		if (FlatIdent_47A9C == 2) then
+			return workspace:Raycast(Origin, Direction, RayParams) == nil;
+		end
+		if (FlatIdent_47A9C == 0) then
+			if not getgenv().Silent.Setting.WallCheck then
+				return true;
+			end
+			Origin, Direction = Cam.CFrame.Position, destination - Cam.CFrame.Position;
+			FlatIdent_47A9C = 1;
+		end
+	end
+end
+local function getShakeOffset(intensity)
+	return Vector3New((math.random(-100, 100) / 100) * intensity, (math.random(-100, 100) / 100) * intensity, (math.random(-100, 100) / 100) * intensity);
+end
+local function getClosestChar()
+	if not checkAlive() then
+		return nil;
+	end
+	local Closest, Dist = nil, math.huge;
+	for _, v in pairs(Players:GetPlayers()) do
+		if ((v ~= Client) and v.Character and v.Character:FindFirstChild("HumanoidRootPart")) then
+			local FlatIdent_43862 = 0;
+			local Hum;
+			while true do
+				if (0 == FlatIdent_43862) then
+					Hum = v.Character:FindFirstChildOfClass("Humanoid");
+					if (Hum and (Hum.Health > getgenv().Silent.Setting.HealthThreshold)) then
+						local ScreenPos, OnScreen = Cam:WorldToScreenPoint(v.Character.HumanoidRootPart.Position);
+						local Mag = (Vector2New(ScreenPos.X, ScreenPos.Y) - Vector2New(Cam.ViewportSize.X / 2, Cam.ViewportSize.Y / 2)).Magnitude;
+						if ((FOV.Radius > Mag) and (Mag < Dist) and OnScreen and WallCheck(v.Character.HumanoidRootPart.Position, {Client.Character,v.Character})) then
+							Closest, Dist = v, Mag;
+						end
+					end
+					break;
+				end
+			end
+		end
+	end
+	return Closest;
+end
+local Old;
+Old = hookmetamethod(game, "__index", function(self, key)
+	local FlatIdent_8F047 = 0;
+	while true do
+		if (FlatIdent_8F047 == 0) then
+			if (self:IsA("Mouse") and (key == "Hit") and getgenv().Silent.Setting.IsTargetting and LockedTarget) then
+				local FlatIdent_31905 = 0;
+				local T;
+				while true do
+					if (FlatIdent_31905 == 1) then
+						if (T and T.Character) then
+							local Part = T.Character:FindFirstChild(TargetParts[math.random(1, #TargetParts)]) or T.Character:FindFirstChild("HumanoidRootPart");
+							if (Part and (Part.Position.Y > getgenv().Silent.Setting.MinimumYThreshold)) then
+								local predOffset = Part.Velocity * getgenv().Silent.Setting.Prediction;
+								local shake = getShakeOffset(getgenv().Silent.Setting.ShakeIntensity);
+								return CFrame.new(Part.Position + predOffset + shake);
+							end
+						end
+						break;
+					end
+					if (0 == FlatIdent_31905) then
+						if not checkAlive() then
+							return Old(self, key);
+						end
+						T = LockedTarget;
+						FlatIdent_31905 = 1;
+					end
+				end
+			end
+			return Old(self, key);
+		end
+	end
+end);
+task.spawn(function()
+	local FlatIdent_61B23 = 0;
+	local RayParams;
+	while true do
+		if (FlatIdent_61B23 == 0) then
+			RayParams = RaycastParams.new();
+			RayParams.FilterType = Enum.RaycastFilterType.Blacklist;
+			FlatIdent_61B23 = 1;
+		end
+		if (FlatIdent_61B23 == 1) then
+			while task.wait(0.05) do
+				if (getgenv().Silent.Setting.TriggerbotEnabled and checkAlive()) then
+					local FlatIdent_946F = 0;
+					local ray;
+					local result;
+					while true do
+						if (FlatIdent_946F == 0) then
+							RayParams.FilterDescendantsInstances = {Client.Character};
+							ray = Cam:ViewportPointToRay(Cam.ViewportSize.X / 2, Cam.ViewportSize.Y / 2);
+							FlatIdent_946F = 1;
+						end
+						if (FlatIdent_946F == 1) then
+							result = workspace:Raycast(ray.Origin, ray.Direction * 1000, RayParams);
+							if (result and result.Instance and result.Instance.Parent) then
+								local FlatIdent_49AED = 0;
+								local hum;
+								while true do
+									if (FlatIdent_49AED == 0) then
+										hum = result.Instance.Parent:FindFirstChildOfClass("Humanoid");
+										if (hum and (hum.Health > getgenv().Silent.Setting.HealthThreshold)) then
+											local FlatIdent_99389 = 0;
+											while true do
+												if (FlatIdent_99389 == 1) then
+													mouse1release();
+													break;
+												end
+												if (FlatIdent_99389 == 0) then
+													mouse1press();
+													task.wait(0.05);
+													FlatIdent_99389 = 1;
+												end
+											end
+										end
+										break;
+									end
+								end
+							end
+							break;
+						end
+					end
+				end
+			end
+			break;
+		end
+	end
+end);
+RunService.Heartbeat:Connect(function(dt)
+	if (getgenv().Silent.Setting.IsTargetting and LockedTarget and LockedTarget.Character and LockedTarget.Character:FindFirstChild("HumanoidRootPart")) then
+		local FlatIdent_7A75F = 0;
+		local hrp;
+		local x;
+		local z;
+		local pos;
+		local myHRP;
+		while true do
+			if (FlatIdent_7A75F == 3) then
+				if myHRP then
+					local FlatIdent_74348 = 0;
+					while true do
+						if (FlatIdent_74348 == 0) then
+							myHRP.Velocity = Vector3.zero;
+							myHRP.CFrame = CFrame.new(pos, hrp.Position);
+							break;
+						end
+					end
+				end
+				break;
+			end
+			if (FlatIdent_7A75F == 1) then
+				x = math.cos(math.rad(theta)) * 15;
+				z = math.sin(math.rad(theta)) * 15;
+				FlatIdent_7A75F = 2;
+			end
+			if (FlatIdent_7A75F == 0) then
+				theta += (270 * dt)
+				hrp = LockedTarget.Character.HumanoidRootPart;
+				FlatIdent_7A75F = 1;
+			end
+			if (FlatIdent_7A75F == 2) then
+				pos = hrp.Position + Vector3.new(x, 200, z);
+				myHRP = Client.Character and Client.Character:FindFirstChild("HumanoidRootPart");
+				FlatIdent_7A75F = 3;
+			end
+		end
+	end
+end);
+Client.CharacterAdded:Connect(function(char)
+	char:WaitForChild("Humanoid").Died:Connect(function()
+		local FlatIdent_759F1 = 0;
+		while true do
+			if (0 == FlatIdent_759F1) then
+				getgenv().Silent.Setting.IsTargetting = false;
+				LockedTarget = nil;
+				break;
+			end
+		end
+	end);
+end);
+local Window = Rayfield:CreateWindow({Name="RyX Hub",LoadingTitle="RyX Hub [NEW]",LoadingSubtitle="By Ryan (solo dev)ðð¸",ConfigurationSaving={Enabled=true}});
+local Updates = Window:CreateTab("Updates!", 4483362458);
+local Main = Window:CreateTab("Main", 4483362458);
+local Blatant = Window:CreateTab("Blatant", 4483362458);
+local UpdateNotes = Updates:CreateParagraph({Title="Update v0.1",Content=[[
 - Publicly Released (Hooray) ð¤©ð¥³
 - Bullet TP patched but it is being worked on ð ï¸
 -More updates to come+â
-    ]]});v26:CreateToggle({Name="Activate Sky Kill",CurrentValue=false,Callback=function(v95) getgenv().Silent.Setting.IsTargetting=v95;end});v26:CreateToggle({Name="Wallcheck",CurrentValue=getgenv().Silent.Setting.WallCheck,Callback=function(v97) getgenv().Silent.Setting.WallCheck=v97;end});v26:CreateSlider({Name="Prediction",Range={1427 -(41 + 1386) ,103.4 -(17 + 86) },Increment=0.005 + 0 ,Suffix="Prediction",CurrentValue=getgenv().Silent.Setting.Prediction,Callback=function(v99) getgenv().Silent.Setting.Prediction=v99;end});local v29;v27:CreateToggle({Name="Enable Blatant Snap Aim",CurrentValue=false,Callback=function(v101) if v101 then local v145=game:GetService("Players");local v146=game:GetService("RunService");local v147=v145.LocalPlayer;local v148=workspace.CurrentCamera;local v149={Revolver=true,["Double Barrel"]=true,["Tactical Shotgun"]=true,Shotgun=true};local function v150() return v147.Character and v147.Character:FindFirstChildOfClass("Tool") ;end local function v151(v160) local v161=0 -0 ;local v162;local v163;local v164;local v165;local v166;while true do if (0==v161) then v162=469 -(270 + 199) ;v163=nil;v161=1 -0 ;end if (v161==(2 -1)) then v164=nil;v165=nil;v161=1 + 1 ;end if (v161==(168 -(122 + 44))) then v166=nil;while true do local v213=0 -0 ;while true do if (v213==(0 -0)) then if (v162==(3 + 0)) then local v239=0 + 0 ;while true do if ((0 -0)==v239) then v166=workspace:Raycast(v163,v164,v165);return  not v166 or v166.Instance:IsDescendantOf(v160.Parent) ;end end end if (v162==(66 -(30 + 35))) then local v240=0 + 0 ;while true do if (v240==(1 + 0)) then v162=1259 -(1043 + 214) ;break;end if (v240==(0 -0)) then v164=(v160.Position-v163).Unit * (1712 -(323 + 889)) ;v165=RaycastParams.new();v240=2 -1 ;end end end v213=581 -(361 + 219) ;end if (v213==(321 -(53 + 267))) then if (v162==(1792 -(1010 + 780))) then v165.FilterType=Enum.RaycastFilterType.Blacklist;v165.FilterDescendantsInstance={v147.Character};v162=1 + 2 ;end if (v162==(413 -(15 + 398))) then if  not v160 then return false;end v163=v148.CFrame.Position;v162=983 -(18 + 964) ;end break;end end end break;end end end local function v152() local v167=0 -0 ;local v168;local v169;local v170;while true do if (v167==(0 + 0)) then v168=0 + 0 ;v169=nil;v167=851 -(20 + 830) ;end if (v167==(1575 -(1281 + 293))) then v170=nil;while true do local v214=0 + 0 ;while true do if (v214==0) then if (v168==(2 -1)) then return v169;end if (v168==(126 -(116 + 10))) then v169,v170=nil,getgenv().Blatant.FOV;for v246,v247 in ipairs(v145:GetPlayers()) do if ((v247~=v147) and v247.Character and v247.Character:FindFirstChild("HumanoidRootPart") and v247.Character:FindFirstChild("Humanoid")) then if (v247.Character.Humanoid.Health>(1 + 9)) then local v259,v260=v148:WorldToViewportPoint(v247.Character.HumanoidRootPart.Position);local v261=(Vector2.new(v259.X,v259.Y) -(v148.ViewportSize/(740 -(542 + 196)))).Magnitude;if (v260 and (v261<v170) and v151(v247.Character.HumanoidRootPart)) then local v263=0 -0 ;while true do if (v263==(0 + 0)) then v169=v247;v170=v261;break;end end end end end end v168=1 + 0 ;end break;end end end break;end end end v29=v146.RenderStepped:Connect(function() local v171=0 -0 ;local v172;while true do if (v171==(0 + 0)) then v172=v150();if (v172 and v149[v172.Name]) then local v220=0;local v221;while true do if (0==v220) then v221=v152();if (v221 and v221.Character and v221.Character:FindFirstChild("HumanoidRootPart")) then local v248=v221.Character.HumanoidRootPart;local v249=v248.Position + (v248.Velocity * getgenv().Blatant.Prediction) ;v148.CFrame=CFrame.new(v148.CFrame.Position,v249);end break;end end end break;end end end);elseif v29 then local v187=0;while true do if ((0 + 0)==v187) then v29:Disconnect();v29=nil;break;end end end end});v27:CreateSlider({Name="Blatant Prediction",Range={0 -0 ,0.4 + 0 },Increment=1551.005 -(1126 + 425) ,Suffix="Fov",CurrentValue=getgenv().Blatant.Prediction,Callback=function(v102) getgenv().Blatant.Prediction=v102;end});v27:CreateSlider({Name="Blatant FOV Radius",Range={39 -29 ,2926 -1926 },Increment=1789 -(214 + 1570) ,Suffix="px",CurrentValue=getgenv().Blatant.FOV,Callback=function(v104) getgenv().Blatant.FOV=v104;end});local v30=v27:CreateParagraph({Title="Best Silent Aim (most blatant)",Content=[[
+    ]]});
+Main:CreateToggle({Name="Activate Sky Kill",CurrentValue=false,Callback=function(Value)
+	getgenv().Silent.Setting.IsTargetting = Value;
+end});
+Main:CreateToggle({Name="Wallcheck",CurrentValue=getgenv().Silent.Setting.WallCheck,Callback=function(val)
+	getgenv().Silent.Setting.WallCheck = val;
+end});
+Main:CreateSlider({Name="Prediction",Range={0,0.4},Increment=0.005,Suffix="Prediction",CurrentValue=getgenv().Silent.Setting.Prediction,Callback=function(v)
+	getgenv().Silent.Setting.Prediction = v;
+end});
+local BlatantConnection;
+Blatant:CreateToggle({Name="Enable Blatant Snap Aim",CurrentValue=false,Callback=function(state)
+	if state then
+		local Players = game:GetService("Players");
+		local RunService = game:GetService("RunService");
+		local LocalPlayer = Players.LocalPlayer;
+		local Camera = workspace.CurrentCamera;
+		local AllowedGuns = {Revolver=true,["Double Barrel"]=true,["Tactical Shotgun"]=true,Shotgun=true};
+		local function GetEquippedTool()
+			return LocalPlayer.Character and LocalPlayer.Character:FindFirstChildOfClass("Tool");
+		end
+		local function IsVisible(targetPart)
+			if not targetPart then
+				return false;
+			end
+			local origin = Camera.CFrame.Position;
+			local direction = (targetPart.Position - origin).Unit * 500;
+			local params = RaycastParams.new();
+			params.FilterType = Enum.RaycastFilterType.Blacklist;
+			params.FilterDescendantsInstance = {LocalPlayer.Character};
+			local result = workspace:Raycast(origin, direction, params);
+			return not result or result.Instance:IsDescendantOf(targetPart.Parent);
+		end
+		local function GetClosestPlayerInFOV()
+			local FlatIdent_324DE = 0;
+			local Closest;
+			local ShortestDistance;
+			while true do
+				if (FlatIdent_324DE == 1) then
+					return Closest;
+				end
+				if (0 == FlatIdent_324DE) then
+					Closest, ShortestDistance = nil, getgenv().Blatant.FOV;
+					for _, player in ipairs(Players:GetPlayers()) do
+						if ((player ~= LocalPlayer) and player.Character and player.Character:FindFirstChild("HumanoidRootPart") and player.Character:FindFirstChild("Humanoid")) then
+							if (player.Character.Humanoid.Health > 10) then
+								local screenPos, OnScreen = Camera:WorldToViewportPoint(player.Character.HumanoidRootPart.Position);
+								local distFromCenter = (Vector2.new(screenPos.X, screenPos.Y) - (Camera.ViewportSize / 2)).Magnitude;
+								if (OnScreen and (distFromCenter < ShortestDistance) and IsVisible(player.Character.HumanoidRootPart)) then
+									local FlatIdent_7909D = 0;
+									while true do
+										if (FlatIdent_7909D == 0) then
+											Closest = player;
+											ShortestDistance = distFromCenter;
+											break;
+										end
+									end
+								end
+							end
+						end
+					end
+					FlatIdent_324DE = 1;
+				end
+			end
+		end
+		BlatantConnection = RunService.RenderStepped:Connect(function()
+			local FlatIdent_64E40 = 0;
+			local equipped;
+			while true do
+				if (FlatIdent_64E40 == 0) then
+					equipped = GetEquippedTool();
+					if (equipped and AllowedGuns[equipped.Name]) then
+						local FlatIdent_8D1A5 = 0;
+						local target;
+						while true do
+							if (0 == FlatIdent_8D1A5) then
+								target = GetClosestPlayerInFOV();
+								if (target and target.Character and target.Character:FindFirstChild("HumanoidRootPart")) then
+									local FlatIdent_8B523 = 0;
+									local part;
+									local predicted;
+									while true do
+										if (FlatIdent_8B523 == 1) then
+											Camera.CFrame = CFrame.new(Camera.CFrame.Position, predicted);
+											break;
+										end
+										if (FlatIdent_8B523 == 0) then
+											part = target.Character.HumanoidRootPart;
+											predicted = part.Position + (part.Velocity * getgenv().Blatant.Prediction);
+											FlatIdent_8B523 = 1;
+										end
+									end
+								end
+								break;
+							end
+						end
+					end
+					break;
+				end
+			end
+		end);
+	elseif BlatantConnection then
+		local FlatIdent_61EE = 0;
+		while true do
+			if (0 == FlatIdent_61EE) then
+				BlatantConnection:Disconnect();
+				BlatantConnection = nil;
+				break;
+			end
+		end
+	end
+end});
+Blatant:CreateSlider({Name="Blatant Prediction",Range={0,0.4},Increment=0.005,Suffix="Fov",CurrentValue=getgenv().Blatant.Prediction,Callback=function(val)
+	getgenv().Blatant.Prediction = val;
+end});
+Blatant:CreateSlider({Name="Blatant FOV Radius",Range={10,1000},Increment=5,Suffix="px",CurrentValue=getgenv().Blatant.FOV,Callback=function(val)
+	getgenv().Blatant.FOV = val;
+end});
+local BlatantNotes = Blatant:CreateParagraph({Title="Best Silent Aim (most blatant)",Content=[[
 Best blatant owner (ryan) usesâ
-    ]]});local v2,v3,v4=game:GetService("Players"),game:GetService("RunService"),game:GetService("UserInputService");local v31,v32=v2.LocalPlayer,workspace.CurrentCamera;local v7,v8=Vector2.new,Vector3.new;local v33=v31:GetMouse();local v34=Drawing.new("Circle");v34.Visible=false;v34.Color=Color3.fromRGB(255,632 -(142 + 235) ,1156 -901 );v34.Thickness=1 + 0 ;v34.NumSides=1041 -(553 + 424) ;getgenv().SmoothLock={Enabled=false,LockAll=true,FOV=56 -26 ,Prediction=0.119 + 0 ,Smoothness=0.25 + 0 ,ShowCircle=false,Targets={},Guns={Revolver=true,["Double Barrel"]=true,["Tactical Shotgun"]=true,Shotgun=true}};local function v40() return v31.Character and v31.Character:FindFirstChildOfClass("Tool") ;end local function v41(v106) local v107=626 -(512 + 114) ;local v108;local v109;local v110;local v111;while true do if (v107==(0 + 0)) then if  not v106 then return false;end v108=v32.CFrame.Position;v107=1 + 0 ;end if (v107==2) then v110.FilterType=Enum.RaycastFilterType.Blacklist;v110.FilterDescendantsInstances={v31.Character};v107=6 -3 ;end if (v107==3) then local v177=0;while true do if ((0 -0)==v177) then v111=workspace:Raycast(v108,v109,v110);return  not v111 or v111.Instance:IsDescendantOf(v106.Parent) ;end end end if (v107==(2 -1)) then local v178=0 + 0 ;while true do if (v178==(1 + 0)) then v107=9 -7 ;break;end if (v178==0) then v109=(v106.Position-v108).Unit * (1969 -(1269 + 200)) ;v110=RaycastParams.new();v178=754 -(239 + 514) ;end end end end end local function v42() local v112,v113=nil,SmoothLock.FOV;for v137,v138 in ipairs(v2:GetPlayers()) do if ((v138~=v31) and v138.Character and v138.Character:FindFirstChild("HumanoidRootPart") and v138.Character:FindFirstChild("Humanoid")) then if ((v138.Character.Humanoid.Health>(4 + 6)) and (SmoothLock.LockAll or SmoothLock.Targets[v138.Name])) then local v193=0;local v194;local v195;local v196;while true do if (v193==(1329 -(797 + 532))) then v194,v195=v32:WorldToViewportPoint(v138.Character.HumanoidRootPart.Position);v196=(v7(v194.X,v194.Y) -(v32.ViewportSize/(2 -0))).Magnitude;v193=1 + 0 ;end if ((1 + 0)==v193) then if (v195 and (v196<v113) and v41(v138.Character.HumanoidRootPart)) then v112,v113=v138,v196;end break;end end end end end return v112;end v3.RenderStepped:Connect(function() local v114=0 -0 ;local v115;while true do if (v114==(1 + 0)) then v34.Visible=SmoothLock.ShowCircle;v34.Radius=SmoothLock.FOV;v114=1204 -(373 + 829) ;end if (v114==(734 -(476 + 255))) then if (v115 and SmoothLock.Guns[v115.Name]) then local v197=1130 -(369 + 761) ;local v198;while true do if (v197==(0 + 0)) then v198=v42();if (v198 and v198.Character and v198.Character:FindFirstChild("HumanoidRootPart")) then local v232=0 -0 ;local v233;local v234;while true do if ((0 -0)==v232) then local v251=238 -(64 + 174) ;while true do if ((1 + 0)==v251) then v232=1;break;end if (v251==(0 -0)) then v233=v198.Character.HumanoidRootPart;v234=v233.Position + (v233.Velocity * SmoothLock.Prediction) ;v251=337 -(144 + 192) ;end end end if ((1 + 0)==v232) then v32.CFrame=v32.CFrame:Lerp(CFrame.new(v32.CFrame.Position,v234),SmoothLock.Smoothness);break;end end end break;end end end break;end if (v114==(0 + 0)) then if  not SmoothLock.Enabled then return;end if ( not v31.Character or (v31.Character:FindFirstChild("Humanoid").Health<=(226 -(42 + 174)))) then return;end v114=1 + 0 ;end if (v114==(2 + 0)) then v34.Position=v32.ViewportSize/(1 + 1) ;v115=v40();v114=1507 -(363 + 1141) ;end end end);v27:CreateToggle({Name="Smooth Lock",CurrentValue=false,Callback=function(v116) SmoothLock.Enabled=v116;end});v27:CreateToggle({Name="Show FOV",CurrentValue=false,Callback=function(v118) SmoothLock.ShowCircle=v118;end});v27:CreateSlider({Name="FOV Radius",Range={10,696 -396 },Increment=1,Suffix="px",CurrentValue=SmoothLock.FOV,Callback=function(v120) SmoothLock.FOV=v120;end});v27:CreateSlider({Name="Prediction",Range={0.01 + 0 ,1975.25 -(1913 + 62) },Increment=0.001,Suffix="s",CurrentValue=SmoothLock.Prediction,Callback=function(v122) SmoothLock.Prediction=v122;end});v27:CreateSlider({Name="Smoothness",Range={0.01 -0 ,3 -2 },Increment=1661.01 -(1477 + 184) ,Suffix="",CurrentValue=SmoothLock.Smoothness,Callback=function(v124) SmoothLock.Smoothness=v124;end});v27:CreateToggle({Name="Lock Everyone",CurrentValue=true,Callback=function(v126) SmoothLock.LockAll=v126;end});for v128,v129 in ipairs(v2:GetPlayers()) do if (v129~=v31) then local v153=0 -0 ;local v154;while true do if (v153==(0 + 0)) then v154=856 -(564 + 292) ;while true do if (v154==(0 -0)) then SmoothLock.Targets[v129.Name]=false;v27:CreateToggle({Name="Lock: "   .. v129.Name ,CurrentValue=false,Callback=function(v224) SmoothLock.Targets[v129.Name]=v224;end});break;end end break;end end end end v2.PlayerAdded:Connect(function(v130) local v131=0 -0 ;while true do if (v131==(0 -0)) then SmoothLock.Targets[v130.Name]=false;v27:CreateToggle({Name="Lock: "   .. v130.Name ,CurrentValue=false,Callback=function(v188) SmoothLock.Targets[v130.Name]=v188;end});break;end end end);local v43=Instance.new("ScreenGui",game.CoreGui);local v44=Instance.new("Frame",v43);local v45=Instance.new("UICorner",v44);local v26=Instance.new("Frame",v44);local v46=Instance.new("UICorner",v26);local v47=Instance.new("TextButton",v26);local v48=Instance.new("UICorner",v47);v44.Name="DragBox";v44.Size=UDim2.new(304 -(244 + 60) ,16 + 4 ,476 -(41 + 435) ,20);v44.Position=UDim2.new(0.5 + 0 , -(88 + 12),1001.5 -(938 + 63) , -(39 + 11));v44.BackgroundColor3=Color3.fromRGB(1205 -(936 + 189) ,80,148 -68 );v44.Active=true;v44.Draggable=true;v45.CornerRadius=UDim.new(1 + 0 ,1613 -(1565 + 48) );v26.Name="MainFrame";v26.Size=UDim2.new(0 + 0 ,1318 -(782 + 356) ,267 -(176 + 91) ,156 -96 );v26.Position=UDim2.new(0 -0 ,1117 -(975 + 117) ,1875 -(157 + 1718) ,0 + 0 );v26.BackgroundColor3=Color3.fromRGB(30 + 0 ,542 -(409 + 103) ,30);v26.Parent=v44;v46.CornerRadius=UDim.new(0 -0 ,40 -28 );v47.Name="RyXButton";v47.Size=UDim2.new(1019 -(697 + 321) , -10,96 -(51 + 44) , -(27 -17));v47.Position=UDim2.new(0 -0 ,5,0 -0 ,2 + 3 );v47.BackgroundColor3=Color3.fromRGB(0,132,477 -222 );v47.Text="RyX Activated";v47.TextColor3=Color3.new(2 -1 ,1228 -(322 + 905) ,612 -(602 + 9) );v47.Font=Enum.Font.GothamBold;v47.TextSize=1203 -(449 + 740) ;v47.Parent=v26;v48.CornerRadius=UDim.new(872 -(826 + 46) ,1915 -(830 + 1075) );local v73=false;v47.MouseButton1Click:Connect(function() local v132=947 -(245 + 702) ;while true do if (v132==2) then if v73 then local v199=524 -(303 + 221) ;local v200;while true do if (v199==(0 -0)) then v200=v22();if v200 then local v235=0;local v236;while true do if (v235==(0 + 0)) then v236=0 + 0 ;while true do if ((1898 -(260 + 1638))==v236) then v9=v200;v6.CameraSubject=v9.Character:FindFirstChild("Humanoid");break;end end break;end end end break;end end else local v201=440 -(382 + 58) ;local v202;while true do if (v201==(0 -0)) then v202=0 + 0 ;while true do if (v202==(0 -0)) then v9=nil;v6.CameraSubject=v5.Character:FindFirstChild("Humanoid");break;end end break;end end end break;end if (v132==(0 -0)) then if  not getgenv().Silent.Setting.IsTargetting then v1:Notify({Title="Sky Kill",Content="Enable 'Sky Kill' in Main tab first.",Duration=3 + 0 });return;end v73= not v73;v132=1206 -(902 + 303) ;end if (v132==(1 -0)) then v47.BackgroundColor3=(v73 and Color3.fromRGB(613 -358 ,6 + 54 ,1750 -(1121 + 569) )) or Color3.fromRGB(214 -(22 + 192) ,815 -(483 + 200) ,413 -(91 + 67) ) ;v47.Text="RyX Activated";v132=2;end end end);v1:Notify({Title="Gui",Content="Drag the gui by the small circle on the side of it.",Duration=5});
+    ]]});
+local Players, RunService, UIS = game:GetService("Players"), game:GetService("RunService"), game:GetService("UserInputService");
+local LocalPlayer, Camera = Players.LocalPlayer, workspace.CurrentCamera;
+local Vector2New, Vector3New = Vector2.new, Vector3.new;
+local Mouse = LocalPlayer:GetMouse();
+local Circle = Drawing.new("Circle");
+Circle.Visible = false;
+Circle.Color = Color3.fromRGB(255, 255, 255);
+Circle.Thickness = 1;
+Circle.NumSides = 64;
+getgenv().SmoothLock = {Enabled=false,LockAll=true,FOV=30,Prediction=0.119,Smoothness=0.25,ShowCircle=false,Targets={},Guns={Revolver=true,["Double Barrel"]=true,["Tactical Shotgun"]=true,Shotgun=true}};
+local function EquippedGun()
+	return LocalPlayer.Character and LocalPlayer.Character:FindFirstChildOfClass("Tool");
+end
+local function IsVisible(part)
+	local FlatIdent_89237 = 0;
+	local origin;
+	local dir;
+	local params;
+	local hit;
+	while true do
+		if (FlatIdent_89237 == 2) then
+			params.FilterType = Enum.RaycastFilterType.Blacklist;
+			params.FilterDescendantsInstances = {LocalPlayer.Character};
+			FlatIdent_89237 = 3;
+		end
+		if (FlatIdent_89237 == 0) then
+			if not part then
+				return false;
+			end
+			origin = Camera.CFrame.Position;
+			FlatIdent_89237 = 1;
+		end
+		if (FlatIdent_89237 == 1) then
+			dir = (part.Position - origin).Unit * 500;
+			params = RaycastParams.new();
+			FlatIdent_89237 = 2;
+		end
+		if (FlatIdent_89237 == 3) then
+			hit = workspace:Raycast(origin, dir, params);
+			return not hit or hit.Instance:IsDescendantOf(part.Parent);
+		end
+	end
+end
+local function ClosestTarget()
+	local closest, shortest = nil, SmoothLock.FOV;
+	for _, plr in ipairs(Players:GetPlayers()) do
+		if ((plr ~= LocalPlayer) and plr.Character and plr.Character:FindFirstChild("HumanoidRootPart") and plr.Character:FindFirstChild("Humanoid")) then
+			if ((plr.Character.Humanoid.Health > 10) and (SmoothLock.LockAll or SmoothLock.Targets[plr.Name])) then
+				local pos, onScreen = Camera:WorldToViewportPoint(plr.Character.HumanoidRootPart.Position);
+				local dist = (Vector2New(pos.X, pos.Y) - (Camera.ViewportSize / 2)).Magnitude;
+				if (onScreen and (dist < shortest) and IsVisible(plr.Character.HumanoidRootPart)) then
+					closest, shortest = plr, dist;
+				end
+			end
+		end
+	end
+	return closest;
+end
+RunService.RenderStepped:Connect(function()
+	if not SmoothLock.Enabled then
+		return;
+	end
+	if (not LocalPlayer.Character or (LocalPlayer.Character:FindFirstChild("Humanoid").Health <= 10)) then
+		return;
+	end
+	Circle.Visible = SmoothLock.ShowCircle;
+	Circle.Radius = SmoothLock.FOV;
+	Circle.Position = Camera.ViewportSize / 2;
+	local equipped = EquippedGun();
+	if (equipped and SmoothLock.Guns[equipped.Name]) then
+		local FlatIdent_3CF36 = 0;
+		local target;
+		while true do
+			if (0 == FlatIdent_3CF36) then
+				target = ClosestTarget();
+				if (target and target.Character and target.Character:FindFirstChild("HumanoidRootPart")) then
+					local FlatIdent_4D434 = 0;
+					local root;
+					local predicted;
+					while true do
+						if (FlatIdent_4D434 == 0) then
+							root = target.Character.HumanoidRootPart;
+							predicted = root.Position + (root.Velocity * SmoothLock.Prediction);
+							FlatIdent_4D434 = 1;
+						end
+						if (FlatIdent_4D434 == 1) then
+							Camera.CFrame = Camera.CFrame:Lerp(CFrame.new(Camera.CFrame.Position, predicted), SmoothLock.Smoothness);
+							break;
+						end
+					end
+				end
+				break;
+			end
+		end
+	end
+end);
+Blatant:CreateToggle({Name="Smooth Lock",CurrentValue=false,Callback=function(v)
+	SmoothLock.Enabled = v;
+end});
+Blatant:CreateToggle({Name="Show FOV",CurrentValue=false,Callback=function(v)
+	SmoothLock.ShowCircle = v;
+end});
+Blatant:CreateSlider({Name="FOV Radius",Range={10,300},Increment=1,Suffix="px",CurrentValue=SmoothLock.FOV,Callback=function(v)
+	SmoothLock.FOV = v;
+end});
+Blatant:CreateSlider({Name="Prediction",Range={0.01,0.25},Increment=0.001,Suffix="s",CurrentValue=SmoothLock.Prediction,Callback=function(v)
+	SmoothLock.Prediction = v;
+end});
+Blatant:CreateSlider({Name="Smoothness",Range={0.01,1},Increment=0.01,Suffix="",CurrentValue=SmoothLock.Smoothness,Callback=function(v)
+	SmoothLock.Smoothness = v;
+end});
+Blatant:CreateToggle({Name="Lock Everyone",CurrentValue=true,Callback=function(v)
+	SmoothLock.LockAll = v;
+end});
+for _, player in ipairs(Players:GetPlayers()) do
+	if (player ~= LocalPlayer) then
+		local FlatIdent_61800 = 0;
+		while true do
+			if (FlatIdent_61800 == 0) then
+				SmoothLock.Targets[player.Name] = false;
+				Blatant:CreateToggle({Name=("Lock: " .. player.Name),CurrentValue=false,Callback=function(v)
+					SmoothLock.Targets[player.Name] = v;
+				end});
+				break;
+			end
+		end
+	end
+end
+Players.PlayerAdded:Connect(function(player)
+	local FlatIdent_90A41 = 0;
+	while true do
+		if (FlatIdent_90A41 == 0) then
+			SmoothLock.Targets[player.Name] = false;
+			Blatant:CreateToggle({Name=("Lock: " .. player.Name),CurrentValue=false,Callback=function(v)
+				SmoothLock.Targets[player.Name] = v;
+			end});
+			break;
+		end
+	end
+end);
+local ScreenGui = Instance.new("ScreenGui", game.CoreGui);
+local DragBox = Instance.new("Frame", ScreenGui);
+local DragCorner = Instance.new("UICorner", DragBox);
+local Main = Instance.new("Frame", DragBox);
+local UICorner = Instance.new("UICorner", Main);
+local Button = Instance.new("TextButton", Main);
+local BtnCorner = Instance.new("UICorner", Button);
+DragBox.Name = "DragBox";
+DragBox.Size = UDim2.new(0, 20, 0, 20);
+DragBox.Position = UDim2.new(0.5, -100, 0.5, -50);
+DragBox.BackgroundColor3 = Color3.fromRGB(80, 80, 80);
+DragBox.Active = true;
+DragBox.Draggable = true;
+DragCorner.CornerRadius = UDim.new(1, 0);
+Main.Name = "MainFrame";
+Main.Size = UDim2.new(0, 180, 0, 60);
+Main.Position = UDim2.new(0, 25, 0, 0);
+Main.BackgroundColor3 = Color3.fromRGB(30, 30, 30);
+Main.Parent = DragBox;
+UICorner.CornerRadius = UDim.new(0, 12);
+Button.Name = "RyXButton";
+Button.Size = UDim2.new(1, -10, 1, -10);
+Button.Position = UDim2.new(0, 5, 0, 5);
+Button.BackgroundColor3 = Color3.fromRGB(0, 132, 255);
+Button.Text = "RyX Activated";
+Button.TextColor3 = Color3.new(1, 1, 1);
+Button.Font = Enum.Font.GothamBold;
+Button.TextSize = 14;
+Button.Parent = Main;
+BtnCorner.CornerRadius = UDim.new(0, 10);
+local Active = false;
+Button.MouseButton1Click:Connect(function()
+	local FlatIdent_6D9D2 = 0;
+	while true do
+		if (FlatIdent_6D9D2 == 1) then
+			Button.BackgroundColor3 = (Active and Color3.fromRGB(255, 60, 60)) or Color3.fromRGB(0, 132, 255);
+			Button.Text = "RyX Activated";
+			FlatIdent_6D9D2 = 2;
+		end
+		if (FlatIdent_6D9D2 == 2) then
+			if Active then
+				local target = getClosestChar();
+				if target then
+					local FlatIdent_72421 = 0;
+					while true do
+						if (FlatIdent_72421 == 0) then
+							LockedTarget = target;
+							Cam.CameraSubject = LockedTarget.Character:FindFirstChild("Humanoid");
+							break;
+						end
+					end
+				end
+			else
+				LockedTarget = nil;
+				Cam.CameraSubject = Client.Character:FindFirstChild("Humanoid");
+			end
+			break;
+		end
+		if (FlatIdent_6D9D2 == 0) then
+			if not getgenv().Silent.Setting.IsTargetting then
+				local FlatIdent_25A9F = 0;
+				while true do
+					if (FlatIdent_25A9F == 0) then
+						Rayfield:Notify({Title="Sky Kill",Content="Enable 'Sky Kill' in Main tab first.",Duration=3});
+						return;
+					end
+				end
+			end
+			Active = not Active;
+			FlatIdent_6D9D2 = 1;
+		end
+	end
+end);
+Rayfield:Notify({Title="Gui",Content="Drag the gui by the small circle on the side of it.",Duration=5});
